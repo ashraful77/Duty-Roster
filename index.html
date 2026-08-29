@@ -2,78 +2,69 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <title>Duty Roster</title>
 <style>
-:root{--bg:#f5f7fb;--card:#fff;--text:#18202a;--muted:#697586;--primary:#2563eb;--border:#dfe5ee;--danger:#dc2626;--soft:#eef4ff}
-*{box-sizing:border-box} body{margin:0;font-family:Arial,Helvetica,sans-serif;background:var(--bg);color:var(--text)}
-header{background:#fff;border-bottom:1px solid var(--border);padding:16px;position:sticky;top:0;z-index:10}
-.header-inner{max-width:1100px;margin:auto;display:flex;align-items:center;justify-content:space-between;gap:12px}
-.logo{display:flex;align-items:center;gap:10px;font-size:22px;font-weight:700}.logo-icon{width:38px;height:38px;border-radius:10px;background:var(--primary);color:white;display:grid;place-items:center;font-weight:bold}
-button,input,select{font:inherit} button{border:0;border-radius:9px;padding:10px 14px;cursor:pointer;font-weight:600} .primary{background:var(--primary);color:white}.secondary{background:#eef1f5;color:var(--text)}.danger{background:#fee2e2;color:#991b1b}
-main{max-width:1100px;margin:20px auto;padding:0 16px}.tabs{display:flex;gap:8px;overflow:auto;margin-bottom:18px}.tab{background:#e9edf3;color:#46515f;white-space:nowrap}.tab.active{background:var(--primary);color:white}
-.card{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:18px;margin-bottom:16px}
-h1,h2,h3{margin:0 0 8px} .muted{color:var(--muted);font-size:14px}.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}.form-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}
-label{font-size:13px;font-weight:600;display:block;margin-bottom:5px} input,select{width:100%;padding:11px;border:1px solid var(--border);border-radius:9px;background:#fff}
-.actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px}.stat-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}.stat{padding:15px;background:var(--soft);border-radius:12px}.stat b{font-size:25px;display:block;margin-top:4px}
-table{width:100%;border-collapse:collapse} th,td{text-align:left;padding:11px 8px;border-bottom:1px solid var(--border);font-size:14px} th{color:var(--muted);font-size:12px;text-transform:uppercase}
-.table-wrap{overflow:auto}.empty{text-align:center;padding:25px;color:var(--muted)}
-.roster-day{margin-bottom:12px;border:1px solid var(--border);border-radius:12px;overflow:hidden}.day-head{background:#f8fafc;padding:12px;font-weight:700;display:flex;justify-content:space-between}.duty-row{padding:10px 12px;display:grid;grid-template-columns:1fr 1fr;gap:10px;border-top:1px solid var(--border)}
-.badge{display:inline-block;padding:4px 8px;border-radius:99px;background:#eef1f5;font-size:12px}
-.hidden{display:none}.notice{padding:11px 13px;background:#fff7ed;border:1px solid #fed7aa;border-radius:10px;color:#9a3412;margin-bottom:14px}
-@media(max-width:700px){.grid,.form-grid{grid-template-columns:1fr}.stat-grid{grid-template-columns:1fr 1fr}.header-inner{align-items:flex-start}.duty-row{grid-template-columns:1fr}}
+:root{--bg:#f4f6f9;--card:#fff;--text:#17202b;--muted:#6b7280;--primary:#2563eb;--border:#dfe4ea;--soft:#eef3ff;--danger:#fee2e2}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--text);font-family:Arial,Helvetica,sans-serif;font-size:15px}
+header{background:#fff;border-bottom:1px solid var(--border);padding:10px 14px;position:sticky;top:0;z-index:5}.head{max-width:1000px;margin:auto;display:flex;align-items:center;justify-content:space-between;gap:8px}
+.logo{display:flex;align-items:center;gap:9px;font-size:20px;font-weight:700}.logoIcon{width:34px;height:34px;border-radius:9px;background:var(--primary);color:#fff;display:grid;place-items:center;font-weight:700}
+main{max-width:1000px;margin:12px auto;padding:0 10px}.tabs{display:flex;gap:5px;overflow-x:auto;padding-bottom:8px}.tab{border:0;background:#e8edf4;color:#3f4a59;padding:8px 12px;border-radius:9px;white-space:nowrap;font-weight:700}.tab.active{background:var(--primary);color:#fff}
+.page.hidden{display:none}.card{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:14px;margin-bottom:12px}h1{font-size:24px;margin:0 0 4px}h2{font-size:19px;margin:0 0 5px}.muted{color:var(--muted);font-size:13px}
+.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}.stat{background:var(--soft);border-radius:10px;padding:10px}.stat b{display:block;font-size:22px;margin-top:2px}
+input,select{width:100%;padding:9px;border:1px solid var(--border);border-radius:8px;background:#fff;font-size:15px}label{font-size:12px;font-weight:700;display:block;margin-bottom:4px}.actions{display:flex;gap:7px;flex-wrap:wrap;margin-top:9px}button{font:inherit;cursor:pointer;border:0;border-radius:8px;padding:9px 12px;font-weight:700}.primary{background:var(--primary);color:#fff}.secondary{background:#e9edf2;color:var(--text)}.danger{background:var(--danger);color:#991b1b}
+.tableWrap{overflow:auto}table{width:100%;border-collapse:collapse;min-width:520px}th,td{padding:7px 6px;border-bottom:1px solid var(--border);text-align:left;font-size:13px}th{font-size:11px;color:var(--muted);text-transform:uppercase}
+.weekBar{display:flex;align-items:center;justify-content:space-between;gap:6px;margin-bottom:9px}.weekTitle{font-weight:800;text-align:center;flex:1}.weekBtn{min-width:42px;padding:8px}
+.rosterTable{width:100%;min-width:0;table-layout:fixed}.rosterTable th,.rosterTable td{text-align:center;padding:5px 3px}.rosterTable th:first-child,.rosterTable td:first-child{text-align:left;width:22%}.rosterTable th{font-size:10px}.rosterTable td{font-size:11px;vertical-align:top}.dateSmall{font-size:9px;color:var(--muted);display:block;font-weight:400}
+.cell{display:block;border-radius:6px;padding:4px 2px;margin:1px 0;background:#f1f3f6;line-height:1.15;min-height:25px}.cell strong{display:block;font-size:10px}.cell select{border:0;background:transparent;padding:2px;font-size:10px;min-width:0}.dutyHead{font-size:9px;color:var(--muted);margin-top:3px}.empty{padding:18px;text-align:center;color:var(--muted)}
+.notice{padding:9px 11px;background:#fff7ed;border:1px solid #fed7aa;border-radius:8px;color:#9a3412;font-size:12px;margin-bottom:10px}
+@media(max-width:600px){main{padding:0 7px}.card{padding:11px;border-radius:10px}.grid3{grid-template-columns:1fr 1fr}.grid3>div:last-child{grid-column:1/-1}.stats{grid-template-columns:repeat(3,1fr)}.stat{padding:8px}.stat b{font-size:19px}.tab{padding:8px 10px}.rosterTable th:first-child,.rosterTable td:first-child{width:24%}}
 </style>
 </head>
 <body>
-<header><div class="header-inner"><div class="logo"><div class="logo-icon">DR</div>Duty Roster</div><button class="secondary" id="resetBtn">Reset Data</button></div></header>
+<header><div class="head"><div class="logo"><div class="logoIcon">DR</div>Duty Roster</div><button class="secondary" id="resetBtn">Reset</button></div></header>
 <main>
-<div class="tabs">
+<nav class="tabs">
 <button class="tab active" data-tab="dashboard">Dashboard</button>
 <button class="tab" data-tab="staff">Staff</button>
-<button class="tab" data-tab="duties">Duty Types</button>
-<button class="tab" data-tab="roster">Roster</button>
-</div>
+<button class="tab" data-tab="duties">Duties</button>
+<button class="tab" data-tab="roster">Weekly Roster</button>
+</nav>
 
 <section id="dashboard" class="page">
-<div class="card"><h1>Duty Roster</h1><p class="muted">Create and manage staff duty schedules.</p></div>
-<div class="stat-grid">
-<div class="stat">Staff<b id="staffCount">0</b></div>
-<div class="stat">Duty Types<b id="dutyCount">0</b></div>
-<div class="stat">Assignments<b id="assignmentCount">0</b></div>
-</div>
-<div class="card" style="margin-top:16px"><h2>Quick Start</h2><p class="muted">First add your staff, then add duty types, and finally create the roster.</p>
-<div class="actions"><button class="primary" data-go="staff">Add Staff</button><button class="secondary" data-go="duties">Add Duty Type</button><button class="secondary" data-go="roster">Create Roster</button></div></div>
+<div class="card"><h1>Duty Roster</h1><div class="muted">Compact weekly staff duty planner.</div></div>
+<div class="stats"><div class="stat">Staff<b id="staffCount">0</b></div><div class="stat">Duties<b id="dutyCount">0</b></div><div class="stat">Assigned<b id="assignmentCount">0</b></div></div>
+<div class="card" style="margin-top:10px"><h2>Quick Start</h2><div class="actions"><button class="primary" data-go="staff">Add Staff</button><button class="secondary" data-go="duties">Add Duty</button><button class="secondary" data-go="roster">Open Roster</button></div></div>
 </section>
 
 <section id="staff" class="page hidden">
-<div class="card"><h2>Add Staff</h2><p class="muted">Enter one staff member at a time.</p>
-<form id="staffForm"><div class="form-grid">
-<div><label>Name</label><input id="staffName" required placeholder="e.g. Rahim Ahmed"></div>
-<div><label>Designation</label><input id="staffDesignation" placeholder="e.g. Supervisor"></div>
-<div><label>Department</label><input id="staffDepartment" placeholder="e.g. Administration"></div>
+<div class="card"><h2>Add Staff</h2><form id="staffForm"><div class="grid3">
+<div><label>Name</label><input id="staffName" required placeholder="Staff name"></div>
+<div><label>Designation</label><input id="staffDesignation" placeholder="Designation"></div>
+<div><label>Department</label><input id="staffDepartment" placeholder="Department"></div>
 </div><div class="actions"><button class="primary">Add Staff</button></div></form></div>
-<div class="card"><h2>Staff List</h2><div class="table-wrap"><table><thead><tr><th>Name</th><th>Designation</th><th>Department</th><th>Action</th></tr></thead><tbody id="staffTable"></tbody></table></div></div>
+<div class="card"><h2>Staff List</h2><div class="tableWrap"><table><thead><tr><th>Name</th><th>Designation</th><th>Department</th><th></th></tr></thead><tbody id="staffTable"></tbody></table></div></div>
 </section>
 
 <section id="duties" class="page hidden">
-<div class="card"><h2>Add Duty Type</h2><form id="dutyForm"><div class="form-grid">
-<div><label>Duty name</label><input id="dutyName" required placeholder="e.g. Morning Duty"></div>
-<div><label>Start time</label><input id="dutyStart" type="time"></div>
-<div><label>End time</label><input id="dutyEnd" type="time"></div>
+<div class="card"><h2>Add Duty Type</h2><form id="dutyForm"><div class="grid3">
+<div><label>Duty</label><input id="dutyName" required placeholder="Morning"></div>
+<div><label>Start</label><input id="dutyStart" type="time"></div>
+<div><label>End</label><input id="dutyEnd" type="time"></div>
 </div><div class="actions"><button class="primary">Add Duty</button></div></form></div>
-<div class="card"><h2>Duty Types</h2><div class="table-wrap"><table><thead><tr><th>Duty</th><th>Time</th><th>Action</th></tr></thead><tbody id="dutyTable"></tbody></table></div></div>
+<div class="card"><h2>Duty Types</h2><div class="tableWrap"><table><thead><tr><th>Duty</th><th>Time</th><th></th></tr></thead><tbody id="dutyTable"></tbody></table></div></div>
 </section>
 
 <section id="roster" class="page hidden">
-<div class="card"><h2>Create Roster</h2><p class="muted">Choose a month and assign staff to each duty.</p>
-<div class="form-grid">
-<div><label>Month</label><input id="monthPicker" type="month"></div>
-<div><label>Number of staff per duty</label><input id="staffPerDuty" type="number" min="1" max="20" value="1"></div>
-<div><label>Generation</label><select id="generation"><option value="manual">Balanced automatic</option><option value="manualOnly">Start blank</option></select></div>
+<div class="card">
+<h2>Weekly Roster</h2><div class="muted">One week at a time • compact view</div>
+<div class="grid3" style="margin-top:9px"><div><label>Week containing</label><input id="weekPicker" type="date"></div><div><label>Staff per duty</label><input id="staffPerDuty" type="number" min="1" max="20" value="1"></div><div><label>Mode</label><select id="mode"><option value="balanced">Balanced automatic</option><option value="blank">Start blank</option></select></div></div>
+<div class="actions"><button class="primary" id="generateBtn">Generate Week</button><button class="secondary" id="clearWeekBtn">Clear Week</button></div>
 </div>
-<div class="actions"><button class="primary" id="generateBtn">Generate Roster</button><button class="secondary" id="clearRosterBtn">Clear Roster</button></div>
-</div>
+<div class="card">
+<div class="weekBar"><button class="secondary weekBtn" id="prevWeek">‹</button><div class="weekTitle" id="weekTitle">Week</div><button class="secondary weekBtn" id="nextWeek">›</button></div>
 <div id="rosterArea"></div>
+</div>
 </section>
 </main>
 
@@ -82,49 +73,49 @@ const KEY="dutyRosterDataV1";
 let data=JSON.parse(localStorage.getItem(KEY)||'{"staff":[],"duties":[],"assignments":{}}');
 const $=id=>document.getElementById(id);
 function save(){localStorage.setItem(KEY,JSON.stringify(data));renderAll()}
-function showTab(id){document.querySelectorAll('.page').forEach(x=>x.classList.toggle('hidden',x.id!==id));document.querySelectorAll('.tab').forEach(x=>x.classList.toggle('active',x.dataset.tab===id));window.scrollTo({top:0,behavior:'smooth'})}
+function esc(v){return String(v??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#039;'}[c]))}
+function showTab(id){document.querySelectorAll('.page').forEach(x=>x.classList.toggle('hidden',x.id!==id));document.querySelectorAll('.tab').forEach(x=>x.classList.toggle('active',x.dataset.tab===id));if(id==='roster')renderRoster()}
 document.querySelectorAll('.tab').forEach(b=>b.addEventListener('click',()=>showTab(b.dataset.tab)));
 document.querySelectorAll('[data-go]').forEach(b=>b.addEventListener('click',()=>showTab(b.dataset.go)));
 
-$('staffForm').addEventListener('submit',e=>{e.preventDefault();data.staff.push({id:crypto.randomUUID(),name:$('staffName').value.trim(),designation:$('staffDesignation').value.trim(),department:$('staffDepartment').value.trim()});e.target.reset();save()});
-$('dutyForm').addEventListener('submit',e=>{e.preventDefault();data.duties.push({id:crypto.randomUUID(),name:$('dutyName').value.trim(),start:$('dutyStart').value,end:$('dutyEnd').value});e.target.reset();save()});
-function delStaff(id){data.staff=data.staff.filter(s=>s.id!==id);Object.keys(data.assignments).forEach(k=>{data.assignments[k]=(data.assignments[k]||[]).filter(x=>x.staffId!==id)});save()}
-function delDuty(id){data.duties=data.duties.filter(d=>d.id!==id);Object.keys(data.assignments).forEach(k=>{data.assignments[k]=(data.assignments[k]||[]).filter(x=>x.dutyId!==id)});save()}
-function daysInMonth(month){const [y,m]=month.split('-').map(Number);return new Date(y,m,0).getDate()}
-function dateKey(month,day){return month+'-'+String(day).padStart(2,'0')}
-function generateRoster(){
- const month=$('monthPicker').value;if(!month){alert('Please select a month.');return}
- if(!data.staff.length||!data.duties.length){alert('Please add at least one staff member and one duty type first.');return}
- const per=Math.max(1,Math.min(20,Number($('staffPerDuty').value)||1));data.assignments={};
- let cursor=0;
- for(let day=1;day<=daysInMonth(month);day++){
-  const key=dateKey(month,day);data.assignments[key]=[];
-  data.duties.forEach(duty=>{
-   for(let n=0;n<per;n++){const staff=data.staff[(cursor++)%data.staff.length];data.assignments[key].push({dutyId:duty.id,staffId:staff.id})}
-  });
- }
+function uid(){return Date.now().toString(36)+Math.random().toString(36).slice(2)}
+$('staffForm').addEventListener('submit',e=>{e.preventDefault();data.staff.push({id:uid(),name:$('staffName').value.trim(),designation:$('staffDesignation').value.trim(),department:$('staffDepartment').value.trim()});e.target.reset();save()});
+$('dutyForm').addEventListener('submit',e=>{e.preventDefault();data.duties.push({id:uid(),name:$('dutyName').value.trim(),start:$('dutyStart').value,end:$('dutyEnd').value});e.target.reset();save()});
+function delStaff(id){data.staff=data.staff.filter(s=>s.id!==id);Object.keys(data.assignments).forEach(k=>data.assignments[k]=(data.assignments[k]||[]).filter(a=>a.staffId!==id));save()}
+function delDuty(id){data.duties=data.duties.filter(d=>d.id!==id);Object.keys(data.assignments).forEach(k=>data.assignments[k]=(data.assignments[k]||[]).filter(a=>a.dutyId!==id));save()}
+
+function parseDate(s){let p=s.split('-').map(Number);return new Date(Date.UTC(p[0],p[1]-1,p[2],12))}
+function dateStr(d){return d.getUTCFullYear()+'-'+String(d.getUTCMonth()+1).padStart(2,'0')+'-'+String(d.getUTCDate()).padStart(2,'0')}
+function monday(d){let x=new Date(d);let day=x.getUTCDay();x.setUTCDate(x.getUTCDate()-(day===0?6:day-1));return x}
+function weekDates(){let start=monday(parseDate($('weekPicker').value));return Array.from({length:7},(_,i)=>{let d=new Date(start);d.setUTCDate(start.getUTCDate()+i);return d})}
+function weekLabel(ds){let a=ds[0],b=ds[6];return a.toLocaleDateString(undefined,{day:'numeric',month:'short',timeZone:'UTC'})+' – '+b.toLocaleDateString(undefined,{day:'numeric',month:'short',year:'numeric',timeZone:'UTC'})}
+function generateWeek(){
+ if(!data.staff.length||!data.duties.length){alert('Add at least one staff member and one duty type first.');return}
+ let ds=weekDates(),per=Math.max(1,Math.min(20,Number($('staffPerDuty').value)||1)),cursor=0;
+ ds.forEach(d=>{let k=dateStr(d);if($('mode').value==='blank')data.assignments[k]=[];else{data.assignments[k]=[];data.duties.forEach(duty=>{for(let n=0;n<per;n++){let st=data.staff[cursor%data.staff.length];cursor++;data.assignments[k].push({dutyId:duty.id,staffId:st.id})}})}});
  save();renderRoster()
 }
-$('generateBtn').addEventListener('click',generateRoster);
-$('clearRosterBtn').addEventListener('click',()=>{data.assignments={};save();renderRoster()});
-$('resetBtn').addEventListener('click',()=>{if(confirm('Delete all staff, duties and roster data?')){data={staff:[],duties:[],assignments:{}};save()}});
-
-function renderAll(){renderStaff();renderDuties();renderStats();renderRoster()}
-function renderStats(){$('staffCount').textContent=data.staff.length;$('dutyCount').textContent=data.duties.length;$('assignmentCount').textContent=Object.values(data.assignments).reduce((a,v)=>a+v.length,0)}
-function renderStaff(){$('staffTable').innerHTML=data.staff.length?data.staff.map(s=>`<tr><td><b>${esc(s.name)}</b></td><td>${esc(s.designation)||'—'}</td><td>${esc(s.department)||'—'}</td><td><button class="danger" onclick="delStaff('${s.id}')">Delete</button></td></tr>`).join(''):'<tr><td colspan="4" class="empty">No staff added yet.</td></tr>'}
-function renderDuties(){$('dutyTable').innerHTML=data.duties.length?data.duties.map(d=>`<tr><td><b>${esc(d.name)}</b></td><td>${d.start||'—'} ${d.end?'– '+d.end:''}</td><td><button class="danger" onclick="delDuty('${d.id}')">Delete</button></td></tr>`).join(''):'<tr><td colspan="3" class="empty">No duty types added yet.</td></tr>'}
+$('generateBtn').addEventListener('click',generateWeek);
+$('clearWeekBtn').addEventListener('click',()=>{weekDates().forEach(d=>delete data.assignments[dateStr(d)]);save();renderRoster()});
+function moveWeek(n){let d=parseDate($('weekPicker').value);d.setUTCDate(d.getUTCDate()+7*n);$('weekPicker').value=dateStr(d);renderRoster()}
+$('prevWeek').addEventListener('click',()=>moveWeek(-1));$('nextWeek').addEventListener('click',()=>moveWeek(1));
+function changeA(k,i,v){if(data.assignments[k]?.[i]){data.assignments[k][i].staffId=v;save();renderRoster()}}
 function renderRoster(){
- const area=$('rosterArea'), keys=Object.keys(data.assignments).sort();
- if(!keys.length){area.innerHTML='<div class="card empty">No roster created yet. Select a month and tap <b>Generate Roster</b>.</div>';return}
- area.innerHTML=keys.map(key=>{
-  const day=Number(key.slice(-2));const dt=new Date(key+'T12:00:00');const label=dt.toLocaleDateString(undefined,{weekday:'long',month:'short',day:'numeric'});
-  const rows=(data.assignments[key]||[]).map((a,i)=>{const d=data.duties.find(x=>x.id===a.dutyId);const s=data.staff.find(x=>x.id===a.staffId);return `<div class="duty-row"><div><span class="badge">${esc(d?.name||'Duty')}</span></div><select onchange="changeAssignment('${key}',${i},this.value)">${data.staff.map(st=>`<option value="${st.id}" ${st.id===a.staffId?'selected':''}>${esc(st.name)}</option>`).join('')}</select></div>`}).join('');
-  return `<div class="roster-day"><div class="day-head"><span>${label}</span><span>${(data.assignments[key]||[]).length} assignment(s)</span></div>${rows}</div>`
- }).join('')
+ let ds=weekDates();$('weekTitle').textContent=weekLabel(ds);
+ if(!data.staff.length||!data.duties.length){$('rosterArea').innerHTML='<div class="empty">Add staff and duty types to create a roster.</div>';return}
+ let head=ds.map(d=>`<th>${d.toLocaleDateString(undefined,{weekday:'short',timeZone:'UTC'})}<span class="dateSmall">${d.getUTCDate()}/${d.getUTCMonth()+1}</span></th>`).join('');
+ let rows=data.staff.map(st=>{let cells=ds.map(d=>{let k=dateStr(d),arr=(data.assignments[k]||[]).filter(a=>a.staffId===st.id);let txt=arr.map(a=>{let du=data.duties.find(x=>x.id===a.dutyId);return `<span class="cell"><strong>${esc(du?.name||'Duty')}</strong></span>`}).join('');return `<td>${txt||'—'}</td>`}).join('');return `<tr><td><b>${esc(st.name)}</b></td>${cells}</tr>`}).join('');
+ let compact=`<div class="tableWrap"><table class="rosterTable"><thead><tr><th>Staff</th>${head}</tr></thead><tbody>${rows}</tbody></table></div>`;
+ let editor=ds.map(d=>{let k=dateStr(d),arr=data.assignments[k]||[];if(!arr.length)return '';let dateLabel=d.toLocaleDateString(undefined,{weekday:'short',day:'numeric',month:'short',timeZone:'UTC'});let controls=arr.map((a,i)=>{let du=data.duties.find(x=>x.id===a.dutyId);return `<div class="cell"><strong>${esc(du?.name||'Duty')}</strong><select onchange="changeA('${k}',${i},this.value)">${data.staff.map(s=>`<option value="${s.id}" ${s.id===a.staffId?'selected':''}>${esc(s.name)}</option>`).join('')}</select></div>`}).join('');return `<div style="margin-top:7px"><b style="font-size:12px">${dateLabel}</b>${controls}</div>`}).join('');
+ $('rosterArea').innerHTML=compact+(editor?`<details style="margin-top:10px"><summary style="cursor:pointer;font-weight:700">Edit assignments</summary>${editor}</details>`:'');
 }
-function changeAssignment(key,index,staffId){if(data.assignments[key]?.[index]){data.assignments[key][index].staffId=staffId;save();renderRoster()}}
-function esc(v){return String(v??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#039;'}[c]))}
-const now=new Date();$('monthPicker').value=now.getFullYear()+'-'+String(now.getMonth()+1).padStart(2,'0');
+function renderStaff(){$('staffTable').innerHTML=data.staff.length?data.staff.map(s=>`<tr><td><b>${esc(s.name)}</b></td><td>${esc(s.designation)||'—'}</td><td>${esc(s.department)||'—'}</td><td><button class="danger" onclick="delStaff('${s.id}')">Delete</button></td></tr>`).join(''):'<tr><td colspan="4" class="empty">No staff added.</td></tr>'}
+function renderDuties(){$('dutyTable').innerHTML=data.duties.length?data.duties.map(d=>`<tr><td><b>${esc(d.name)}</b></td><td>${d.start||'—'}${d.end?' – '+d.end:''}</td><td><button class="danger" onclick="delDuty('${d.id}')">Delete</button></td></tr>`).join(''):'<tr><td colspan="3" class="empty">No duties added.</td></tr>'}
+function renderStats(){$('staffCount').textContent=data.staff.length;$('dutyCount').textContent=data.duties.length;$('assignmentCount').textContent=Object.values(data.assignments).reduce((n,a)=>n+(a?.length||0),0)}
+function renderAll(){renderStaff();renderDuties();renderStats();renderRoster()}
+$('resetBtn').addEventListener('click',()=>{if(confirm('Delete all saved staff, duties and roster data?')){data={staff:[],duties:[],assignments:{}};save()}});
+let today=new Date();$('weekPicker').value=today.getFullYear()+'-'+String(today.getMonth()+1).padStart(2,'0')+'-'+String(today.getDate()).padStart(2,'0');
+$('weekPicker').addEventListener('change',renderRoster);
 renderAll();
 </script>
 </body>
