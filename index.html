@@ -5,150 +5,230 @@
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <title>Duty Roster</title>
 <style>
-:root{--bg:#f4f6f9;--card:#fff;--text:#17202b;--muted:#687385;--primary:#2563eb;--border:#dce3ec;--soft:#eef4ff}
-*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--text);font-family:Arial,Helvetica,sans-serif;font-size:15px}
-header{background:#fff;border-bottom:1px solid var(--border);padding:10px 14px;position:sticky;top:0;z-index:5}.head{max-width:1050px;margin:auto;display:flex;align-items:center;justify-content:space-between;gap:8px}
-.logo{display:flex;align-items:center;gap:9px;font-size:20px;font-weight:800}.logoIcon{width:34px;height:34px;border-radius:9px;background:var(--primary);color:#fff;display:grid;place-items:center;font-weight:800}
-main{max-width:1050px;margin:12px auto;padding:0 9px}.tabs{display:flex;gap:5px;overflow-x:auto;padding-bottom:8px}.tab{border:0;background:#e8edf4;color:#3f4a59;padding:8px 11px;border-radius:9px;white-space:nowrap;font-weight:800}.tab.active{background:var(--primary);color:#fff}
-.page.hidden{display:none}.card{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:13px;margin-bottom:11px}h1{font-size:24px;margin:0 0 4px}h2{font-size:19px;margin:0 0 5px}.muted{color:var(--muted);font-size:13px}
-.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}.grid2{display:grid;grid-template-columns:repeat(2,1fr);gap:8px}.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:8px}.stat{background:var(--soft);border-radius:10px;padding:9px}.stat b{display:block;font-size:20px;margin-top:2px}
-input,select{width:100%;padding:9px;border:1px solid var(--border);border-radius:8px;background:#fff;font-size:15px}label{font-size:12px;font-weight:800;display:block;margin-bottom:4px}.actions{display:flex;gap:7px;flex-wrap:wrap;margin-top:9px}button{font:inherit;cursor:pointer;border:0;border-radius:8px;padding:9px 12px;font-weight:800}.primary{background:var(--primary);color:#fff}.secondary{background:#e9edf2;color:var(--text)}.danger{background:#fee2e2;color:#991b1b}
-.tableWrap{overflow:auto}table{width:100%;border-collapse:collapse;min-width:520px}th,td{padding:7px 6px;border-bottom:1px solid var(--border);text-align:left;font-size:13px}th{font-size:11px;color:var(--muted);text-transform:uppercase}
-.weekBar{display:flex;align-items:center;justify-content:space-between;gap:6px;margin-bottom:9px}.weekTitle{font-weight:900;text-align:center;flex:1}.weekBtn{min-width:42px;padding:8px}
-.rosterTable{width:100%;min-width:0;table-layout:fixed}.rosterTable th,.rosterTable td{text-align:center;padding:5px 3px}.rosterTable th:first-child,.rosterTable td:first-child{text-align:left;width:21%}.rosterTable th{font-size:10px}.rosterTable td{font-size:10px;vertical-align:top}
-.dateSmall{font-size:9px;color:var(--muted);display:block;font-weight:400}.cell{display:block;border-radius:6px;padding:4px 2px;margin:2px 0;line-height:1.1;min-height:25px;border:1px solid transparent}.cell strong{display:block;font-size:9px}.cell select{border:0;background:transparent;padding:2px;font-size:10px;min-width:0}
-.c1{background:#dbeafe;border-color:#93c5fd}.c2{background:#dcfce7;border-color:#86efac}.c3{background:#fef3c7;border-color:#fcd34d}.c4{background:#fce7f3;border-color:#f9a8d4}.c5{background:#ede9fe;border-color:#c4b5fd}.c6{background:#cffafe;border-color:#67e8f9}.c7{background:#ffedd5;border-color:#fdba74}.c8{background:#e0f2fe;border-color:#7dd3fc}
-.legend{display:flex;gap:5px;flex-wrap:wrap;margin-top:8px}.legend span{padding:4px 7px;border-radius:99px;font-size:11px;font-weight:700}
-.groupCard{border:1px solid var(--border);border-radius:10px;padding:10px;margin-top:8px}.groupHead{display:flex;justify-content:space-between;gap:8px;align-items:center}.checkGrid{display:grid;grid-template-columns:repeat(2,1fr);gap:5px;margin-top:8px}.check{display:flex;gap:6px;align-items:center;padding:6px;border:1px solid var(--border);border-radius:7px;font-size:12px}.check input{width:auto}.empty{text-align:center;color:var(--muted);padding:18px}.notice{padding:9px 11px;background:#fff7ed;border:1px solid #fed7aa;border-radius:8px;color:#9a3412;font-size:12px;margin-bottom:9px}
-@media(max-width:650px){main{padding:0 7px}.grid3{grid-template-columns:1fr 1fr}.grid3>div:last-child{grid-column:1/-1}.grid2{grid-template-columns:1fr}.stats{grid-template-columns:repeat(2,1fr)}.card{padding:11px}.tab{padding:8px 10px}.rosterTable th:first-child,.rosterTable td:first-child{width:23%}.checkGrid{grid-template-columns:1fr}}
+:root{--bg:#eef1f5;--card:#fff;--text:#17202b;--muted:#687385;--primary:#2563eb;--border:#d9dee7}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--text);font-family:Arial,Helvetica,sans-serif}
+header{background:#fff;border-bottom:1px solid var(--border);padding:10px 14px;position:sticky;top:0;z-index:10}
+.head{max-width:1100px;margin:auto;display:flex;align-items:center;justify-content:space-between;gap:8px}
+.logo{display:flex;align-items:center;gap:9px;font-size:20px;font-weight:800}
+.logoIcon{width:35px;height:35px;border-radius:9px;background:#2563eb;color:#fff;display:grid;place-items:center}
+main{max-width:1100px;margin:12px auto;padding:0 9px}
+.tabs{display:flex;gap:5px;overflow-x:auto;padding-bottom:8px}
+.tab{border:0;background:#e5e9ef;padding:9px 12px;border-radius:9px;white-space:nowrap;font-weight:800}
+.tab.active{background:#2563eb;color:white}
+.page.hidden{display:none}
+.card{background:#fff;border:1px solid var(--border);border-radius:12px;padding:14px;margin-bottom:11px}
+h1,h2{margin:0 0 5px}h1{font-size:24px}h2{font-size:19px}
+.muted{font-size:13px;color:var(--muted)}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:9px}
+.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:9px}
+label{display:block;font-size:12px;font-weight:800;margin-bottom:4px}
+input,select,textarea{width:100%;padding:10px;border:1px solid #cfd6df;border-radius:8px;background:#fff;font:inherit}
+textarea{min-height:70px;resize:vertical}
+button{border:0;border-radius:8px;padding:9px 13px;font:inherit;font-weight:800;cursor:pointer}
+.primary{background:#2563eb;color:#fff}.secondary{background:#e8ecf1}.danger{background:#fee2e2;color:#991b1b}
+.actions{display:flex;gap:7px;flex-wrap:wrap;margin-top:10px}
+.checkGrid{display:grid;grid-template-columns:repeat(2,1fr);gap:6px}
+.check{display:flex;gap:6px;align-items:center;border:1px solid var(--border);border-radius:7px;padding:7px;font-size:13px}
+.check input{width:auto}
+.notice{padding:9px 11px;background:#fff7ed;border:1px solid #fed7aa;color:#9a3412;border-radius:8px;font-size:12px;margin-bottom:9px}
+.saved{border:1px solid var(--border);border-radius:9px;padding:10px;margin-top:8px;display:flex;justify-content:space-between;gap:8px;align-items:center}
+.empty{text-align:center;color:var(--muted);padding:18px}
+
+/* Roster preview: intentionally close to the supplied poster examples */
+.previewWrap{overflow:auto;background:#ddd;padding:12px}
+.poster{width:760px;min-height:700px;margin:auto;background:#fff;border:8px solid #30343a;position:relative;overflow:hidden}
+.poster .topBand{height:82px;background:#f4b13d;display:flex;align-items:center;justify-content:center;border-bottom:6px solid #4a4a4a;font-family:Georgia,serif;font-size:42px;font-weight:900;font-style:italic;text-transform:uppercase;text-align:center;padding:4px 80px}
+.poster .titleBand{background:#e7f1df;border-bottom:6px solid #555;text-align:center;padding:12px 15px;font-size:28px;font-weight:900;font-style:italic;color:#c51d22}
+.poster .titleBand.blue{color:#173d9b;background:#fff0ae}
+.poster .titleBand.black{color:#111}
+.posterGrid{display:grid;grid-template-columns:150px 1fr 150px;min-height:510px}
+.side{background:#dbe9f8;display:flex;align-items:center;justify-content:center;overflow:hidden}
+.side.left{border-right:5px solid #555}.side.right{border-left:5px solid #555}
+.sideText{font-size:72px;color:#1971c2;transform:rotate(-90deg);font-weight:900;opacity:.95}
+.rosterTable{width:100%;border-collapse:collapse;table-layout:fixed}
+.rosterTable th,.rosterTable td{border-bottom:4px solid #555;border-right:4px solid #555;padding:6px 10px}
+.rosterTable th:last-child,.rosterTable td:last-child{border-right:0}
+.rosterTable th{font-size:28px;background:#f8f8f8;text-align:left;height:62px}
+.rosterTable td{font-size:27px;height:56px}
+.rosterTable .date{background:#d9ecfb;width:27%}
+.rosterTable .day{background:#fff;width:22%}
+.rosterTable .person{background:#fff2c9;font-weight:700}
+.poster .bottomBand{min-height:70px;background:#c9e5b5;border-top:6px solid #555;text-align:center;padding:13px;font-family:Georgia,serif;font-size:25px;font-style:italic}
+.poster.black .topBand{background:#f17c29}.poster.black .titleBand{background:#ffe89d;color:#143e9b}.poster.black .side{background:#9db7df}.poster.black .person{background:#fff2c9;font-style:italic}
+.poster.blue .topBand{background:#f5d36b}.poster.blue .titleBand{background:#e5f0dd}.poster.blue .side{background:#fff}.poster.blue .bottomBand{background:#fff}
+.previewActions{display:flex;gap:7px;flex-wrap:wrap;margin-bottom:8px}
+
+/* print only the roster */
+@media print{
+ body{background:#fff}.noPrint,header,main>.tabs,main>.card:not(#previewCard){display:none!important}
+ #previewCard{display:block!important;border:0;padding:0;margin:0}
+ .previewWrap{padding:0;background:#fff;overflow:visible}
+ .poster{width:100%;border:8px solid #30343a;page-break-inside:avoid}
+}
+@media(max-width:700px){
+ .grid2,.grid3{grid-template-columns:1fr 1fr}.grid3>div:last-child{grid-column:1/-1}
+ .poster{width:760px}
+}
+@media(max-width:450px){.grid2,.grid3,.checkGrid{grid-template-columns:1fr}}
 </style>
 </head>
 <body>
-<header><div class="head"><div class="logo"><div class="logoIcon">DR</div>Duty Roster</div><button class="secondary" id="resetBtn">Reset</button></div></header>
+<header class="noPrint"><div class="head"><div class="logo"><div class="logoIcon">DR</div>Duty Roster</div><button class="secondary" id="resetBtn">Reset</button></div></header>
+
 <main>
-<nav class="tabs">
-<button class="tab active" data-tab="dashboard">Dashboard</button>
+<nav class="tabs noPrint">
+<button class="tab active" data-tab="designer">Roster Designer</button>
 <button class="tab" data-tab="staff">Staff</button>
-<button class="tab" data-tab="duties">Duties</button>
-<button class="tab" data-tab="groups">Roster Groups</button>
-<button class="tab" data-tab="roster">Weekly Roster</button>
+<button class="tab" data-tab="saved">Saved Rosters</button>
 </nav>
 
-<section id="dashboard" class="page">
-<div class="card"><h1>Duty Roster</h1><div class="muted">Colourful, compact weekly staff duty planner.</div></div>
-<div class="stats"><div class="stat">Staff<b id="staffCount">0</b></div><div class="stat">Duties<b id="dutyCount">0</b></div><div class="stat">Groups<b id="groupCount">0</b></div><div class="stat">Assigned<b id="assignmentCount">0</b></div></div>
-<div class="card" style="margin-top:10px"><h2>Quick Start</h2><div class="actions"><button class="primary" data-go="staff">Add Staff</button><button class="secondary" data-go="duties">Add Duty</button><button class="secondary" data-go="groups">Create Staff Group</button><button class="secondary" data-go="roster">Open Roster</button></div></div>
-</section>
+<section id="designer" class="page">
+<div class="card noPrint">
+<h1>Create Poster Roster</h1>
+<div class="muted">Make a roster like the examples: organisation header, title, Date / Day / Staff table, coloured sections and footer.</div>
 
-<section id="staff" class="page hidden">
-<div class="card"><h2>Add Staff</h2><form id="staffForm"><div class="grid3">
-<div><label>Name</label><input id="staffName" required placeholder="Staff name"></div>
-<div><label>Designation</label><input id="staffDesignation" placeholder="Designation"></div>
-<div><label>Department / Type</label><input id="staffDepartment" placeholder="e.g. Nursing, Security"></div>
-</div><div class="actions"><button class="primary">Add Staff</button></div></form></div>
-<div class="card"><h2>Staff List</h2><div class="tableWrap"><table><thead><tr><th>Name</th><th>Designation</th><th>Type</th><th></th></tr></thead><tbody id="staffTable"></tbody></table></div></div>
-</section>
-
-<section id="duties" class="page hidden">
-<div class="card"><h2>Add Duty Type</h2><form id="dutyForm"><div class="grid3">
-<div><label>Duty</label><input id="dutyName" required placeholder="Morning"></div>
-<div><label>Start</label><input id="dutyStart" type="time"></div>
-<div><label>End</label><input id="dutyEnd" type="time"></div>
-</div><div class="actions"><button class="primary">Add Duty</button></div></form></div>
-<div class="card"><h2>Duty Types</h2><div class="legend" id="dutyLegend"></div><div class="tableWrap"><table><thead><tr><th>Duty</th><th>Time</th><th>Colour</th><th></th></tr></thead><tbody id="dutyTable"></tbody></table></div></div>
-</section>
-
-<section id="groups" class="page hidden">
-<div class="card"><h2>Create Roster Group</h2><div class="muted">Make separate rosters for different staff types, departments or teams.</div>
-<form id="groupForm" style="margin-top:9px"><div class="grid2">
-<div><label>Group name</label><input id="groupName" required placeholder="e.g. Nurses"></div>
-<div><label>Description</label><input id="groupDesc" placeholder="Optional"></div>
+<div class="grid3" style="margin-top:10px">
+<div><label>Organisation / Facility</label><input id="org" value="INDRANI PHC" placeholder="e.g. INDRANI PHC"></div>
+<div><label>Roster title</label><input id="rosterTitle" value="Doctors' Roster as per BMOH"></div>
+<div><label>Roster type</label><select id="rosterType"><option>Doctors</option><option>GDA</option><option>Nurses</option><option>Staff</option><option>Custom</option></select></div>
 </div>
-<div style="margin-top:9px"><label>Select staff for this group</label><div id="staffChecks" class="checkGrid"></div></div>
-<div style="margin-top:9px"><label>Select duties for this group</label><div id="dutyChecks" class="checkGrid"></div></div>
-<div class="actions"><button class="primary">Create Group</button></div></form></div>
-<div class="card"><h2>Roster Groups</h2><div id="groupsList"></div></div>
-</section>
 
-<section id="roster" class="page hidden">
-<div class="card">
-<h2>Weekly Roster</h2><div class="muted">Compact 7-day view • automatic or fully manual</div>
 <div class="grid3" style="margin-top:9px">
-<div><label>Roster group</label><select id="groupPicker"></select></div>
-<div><label>Week containing</label><input id="weekPicker" type="date"></div>
-<div><label>Staff per duty</label><input id="staffPerDuty" type="number" min="1" max="20" value="1"></div>
+<div><label>Start date</label><input id="startDate" type="date"></div>
+<div><label>End date</label><input id="endDate" type="date"></div>
+<div><label>Design</label><select id="design"><option value="blue">Blue & Yellow</option><option value="orange">Orange & Blue</option><option value="green">Green & Cream</option></select></div>
 </div>
-<div class="actions"><button class="primary" id="generateBtn">Generate Balanced</button><button class="secondary" id="manualBtn">Create Blank / Manual</button><button class="secondary" id="clearWeekBtn">Clear Week</button></div>
+
+<div class="grid2" style="margin-top:9px">
+<div><label>Footer text</label><input id="footerText" value="Dedicated to care, committed to cure."></div>
+<div><label>Side panel text / symbol</label><input id="sideText" value="⚕"></div>
 </div>
-<div class="card">
-<div class="weekBar"><button class="secondary weekBtn" id="prevWeek">‹</button><div class="weekTitle" id="weekTitle">Week</div><button class="secondary weekBtn" id="nextWeek">›</button></div>
-<div id="rosterArea"></div>
+
+<div style="margin-top:10px">
+<label>Select staff for this roster</label>
+<div id="staffChecks" class="checkGrid"></div>
 </div>
+
+<div class="actions">
+<button class="primary" id="makeRows">Create / Refresh Rows</button>
+<button class="secondary" id="clearAssignments">Clear Names</button>
+</div>
+</div>
+
+<div class="card noPrint" id="assignmentCard">
+<h2>Manual Assignment</h2>
+<div class="muted">Choose the staff member for each date. This is the easiest way to make the roster manually.</div>
+<div id="assignmentRows" style="margin-top:8px"></div>
+</div>
+
+<div class="card" id="previewCard">
+<div class="previewActions noPrint">
+<button class="primary" id="printBtn">🖨️ Print / Save PDF</button>
+<button class="secondary" id="saveBtn">💾 Save Roster</button>
+</div>
+<div class="previewWrap"><div id="poster" class="poster blue"></div></div>
+</div>
+</section>
+
+<section id="staff" class="page hidden noPrint">
+<div class="card"><h2>Add Staff</h2><form id="staffForm">
+<div class="grid3"><div><label>Name</label><input id="staffName" required placeholder="Staff name"></div><div><label>Designation</label><input id="staffDesignation" placeholder="Doctor / GDA"></div><div><label>Department / Type</label><input id="staffDept" placeholder="Department"></div></div>
+<div class="actions"><button class="primary">Add Staff</button></div>
+</form></div>
+<div class="card"><h2>Staff List</h2><div id="staffList"></div></div>
+</section>
+
+<section id="saved" class="page hidden noPrint">
+<div class="card"><h2>Saved Rosters</h2><div class="muted">Saved on this device for now. Cloud backup can be added later.</div><div id="savedList"></div></div>
 </section>
 </main>
 
 <script>
-const KEY="dutyRosterDataV1";
-let data=JSON.parse(localStorage.getItem(KEY)||'{"staff":[],"duties":[],"assignments":{},"groups":[]}');
-if(!Array.isArray(data.groups))data.groups=[];
-if(!data.assignments)data.assignments={};
-const $=id=>document.getElementById(id);
-const colors=['c1','c2','c3','c4','c5','c6','c7','c8'];
-function uid(){return Date.now().toString(36)+Math.random().toString(36).slice(2)}
-function save(){localStorage.setItem(KEY,JSON.stringify(data));renderAll()}
-function esc(v){return String(v??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#039;'}[c]))}
-function showTab(id){document.querySelectorAll('.page').forEach(x=>x.classList.toggle('hidden',x.id!==id));document.querySelectorAll('.tab').forEach(x=>x.classList.toggle('active',x.dataset.tab===id));if(id==='groups')renderGroupInputs();if(id==='roster'){renderGroupPicker();renderRoster()}}
-document.querySelectorAll('.tab').forEach(b=>b.addEventListener('click',()=>showTab(b.dataset.tab)));
-document.querySelectorAll('[data-go]').forEach(b=>b.addEventListener('click',()=>showTab(b.dataset.go)));
+const KEY="dutyRosterPosterV2";
+let data=JSON.parse(localStorage.getItem(KEY)||'{}');
+if(!Array.isArray(data.staff))data.staff=[];
+if(!Array.isArray(data.saved))data.saved=[];
+if(!Array.isArray(data.rows))data.rows=[];
 
-$('staffForm').addEventListener('submit',e=>{e.preventDefault();data.staff.push({id:uid(),name:$('staffName').value.trim(),designation:$('staffDesignation').value.trim(),department:$('staffDepartment').value.trim()});e.target.reset();save()});
-$('dutyForm').addEventListener('submit',e=>{e.preventDefault();data.duties.push({id:uid(),name:$('dutyName').value.trim(),start:$('dutyStart').value,end:$('dutyEnd').value,color:colors[data.duties.length%colors.length]});e.target.reset();save()});
-function delStaff(id){data.staff=data.staff.filter(s=>s.id!==id);data.groups.forEach(g=>g.staffIds=g.staffIds.filter(x=>x!==id));Object.keys(data.assignments).forEach(k=>data.assignments[k]=(data.assignments[k]||[]).filter(a=>a.staffId!==id));save()}
-function delDuty(id){data.duties=data.duties.filter(d=>d.id!==id);data.groups.forEach(g=>g.dutyIds=g.dutyIds.filter(x=>x!==id));Object.keys(data.assignments).forEach(k=>data.assignments[k]=(data.assignments[k]||[]).filter(a=>a.dutyId!==id));save()}
-function delGroup(id){data.groups=data.groups.filter(g=>g.id!==id);if($('groupPicker').value===id)$('groupPicker').value='all';save()}
+const $=id=>document.getElementById(id);
+const esc=v=>String(v??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#039;'}[c]));
+function uid(){return Date.now().toString(36)+Math.random().toString(36).slice(2)}
+function saveData(){localStorage.setItem(KEY,JSON.stringify(data))}
 function parseDate(s){let p=s.split('-').map(Number);return new Date(Date.UTC(p[0],p[1]-1,p[2],12))}
 function dateStr(d){return d.getUTCFullYear()+'-'+String(d.getUTCMonth()+1).padStart(2,'0')+'-'+String(d.getUTCDate()).padStart(2,'0')}
-function monday(d){let x=new Date(d),day=x.getUTCDay();x.setUTCDate(x.getUTCDate()-(day===0?6:day-1));return x}
-function weekDates(){let start=monday(parseDate($('weekPicker').value));return Array.from({length:7},(_,i)=>{let d=new Date(start);d.setUTCDate(d.getUTCDate()+i);return d})}
-function weekLabel(ds){return ds[0].toLocaleDateString(undefined,{day:'numeric',month:'short',timeZone:'UTC'})+' – '+ds[6].toLocaleDateString(undefined,{day:'numeric',month:'short',year:'numeric',timeZone:'UTC'})}
-function currentGroup(){let id=$('groupPicker').value;if(id&&id!=='all')return data.groups.find(g=>g.id===id)||null;return null}
-function groupStaff(g){return g?data.staff.filter(s=>g.staffIds.includes(s.id)):data.staff}
-function groupDuties(g){return g?data.duties.filter(d=>g.dutyIds.includes(d.id)):data.duties}
-function renderGroupPicker(){let old=$('groupPicker').value;let opts='<option value="all">All Staff</option>'+data.groups.map(g=>`<option value="${g.id}">${esc(g.name)}</option>`).join('');$('groupPicker').innerHTML=opts;if(data.groups.some(g=>g.id===old))$('groupPicker').value=old}
-$('groupPicker').addEventListener('change',renderRoster);
-function renderGroupInputs(){
- $('staffChecks').innerHTML=data.staff.length?data.staff.map(s=>`<label class="check"><input type="checkbox" value="${s.id}" class="staffCheck"> ${esc(s.name)} <span class="muted">(${esc(s.department)||'General'})</span></label>`).join(''):'<div class="empty">Add staff first.</div>';
- $('dutyChecks').innerHTML=data.duties.length?data.duties.map(d=>`<label class="check"><input type="checkbox" value="${d.id}" class="dutyCheck"> <span class="cell ${d.color}" style="display:inline;padding:3px 6px;margin:0">${esc(d.name)}</span></label>`).join(''):'<div class="empty">Add duties first.</div>';
+function datesBetween(a,b){let x=parseDate(a),y=parseDate(b),out=[];if(y<x)return out;let safety=0;while(x<=y&&safety++<62){out.push(new Date(x));x.setUTCDate(x.getUTCDate()+1)}return out}
+function niceDate(d){return String(d.getUTCDate()).padStart(2,'0')+'-'+d.toLocaleDateString(undefined,{month:'short',timeZone:'UTC'})}
+function dayName(d){return d.toLocaleDateString(undefined,{weekday:'short',timeZone:'UTC'})}
+
+function renderStaffChecks(){
+ $('staffChecks').innerHTML=data.staff.length?data.staff.map(s=>`<label class="check"><input class="staffPick" type="checkbox" value="${s.id}" checked> <b>${esc(s.name)}</b> <span class="muted">${esc(s.dept||s.designation||'')}</span></label>`).join(''):'<div class="empty">Add staff first.</div>';
 }
-$('groupForm').addEventListener('submit',e=>{e.preventDefault();let staffIds=[...document.querySelectorAll('.staffCheck:checked')].map(x=>x.value),dutyIds=[...document.querySelectorAll('.dutyCheck:checked')].map(x=>x.value);if(!staffIds.length||!dutyIds.length){alert('Select at least one staff member and one duty.');return}data.groups.push({id:uid(),name:$('groupName').value.trim(),description:$('groupDesc').value.trim(),staffIds,dutyIds});e.target.reset();save();renderGroupInputs()});
-function renderGroups(){let box=$('groupsList');box.innerHTML=data.groups.length?data.groups.map(g=>`<div class="groupCard"><div class="groupHead"><div><b>${esc(g.name)}</b><div class="muted">${esc(g.description)||'Separate roster group'}</div></div><button class="danger" onclick="delGroup('${g.id}')">Delete</button></div><div class="muted" style="margin-top:6px">${g.staffIds.length} staff • ${g.dutyIds.length} duty type(s)</div></div>`).join(''):'<div class="empty">No roster groups yet. Create one for Nurses, Security, Drivers, Teachers, etc.</div>'}
-function makeWeek(blank){
- let g=currentGroup(),ss=groupStaff(g),ds=groupDuties(g);if(!ss.length||!ds.length){alert('This roster group has no staff or duties.');return}
- let per=Math.max(1,Math.min(20,Number($('staffPerDuty').value)||1)),dates=weekDates(),cursor=0;
- dates.forEach(d=>{let k=dateStr(d);data.assignments[k]=(data.assignments[k]||[]).filter(a=>!ss.some(s=>s.id===a.staffId)||!ds.some(x=>x.id===a.dutyId));if(blank)return;ds.forEach(duty=>{for(let n=0;n<per;n++){let st=ss[cursor%ss.length];cursor++;data.assignments[k].push({dutyId:duty.id,staffId:st.id})}})});
- save();renderRoster()
+function selectedStaff(){
+ let ids=[...document.querySelectorAll('.staffPick:checked')].map(x=>x.value);
+ return data.staff.filter(s=>ids.includes(s.id));
 }
-$('generateBtn').addEventListener('click',()=>makeWeek(false));$('manualBtn').addEventListener('click',()=>makeWeek(true));
-$('clearWeekBtn').addEventListener('click',()=>{let g=currentGroup(),ss=groupStaff(g),ds=groupDuties(g);weekDates().forEach(d=>{let k=dateStr(d);data.assignments[k]=(data.assignments[k]||[]).filter(a=>!ss.some(s=>s.id===a.staffId)||!ds.some(x=>x.id===a.dutyId));});save();renderRoster()});
-function moveWeek(n){let d=parseDate($('weekPicker').value);d.setUTCDate(d.getUTCDate()+7*n);$('weekPicker').value=dateStr(d);renderRoster()}
-$('prevWeek').addEventListener('click',()=>moveWeek(-1));$('nextWeek').addEventListener('click',()=>moveWeek(1));$('weekPicker').addEventListener('change',renderRoster);
-function changeA(k,i,v){if(data.assignments[k]?.[i]){data.assignments[k][i].staffId=v;save();renderRoster()}}
-function renderRoster(){
- let ds=weekDates(),g=currentGroup(),ss=groupStaff(g),duties=groupDuties(g);$('weekTitle').textContent=weekLabel(ds);
- if(!ss.length||!duties.length){$('rosterArea').innerHTML='<div class="empty">Select a group or add staff and duties.</div>';return}
- let head=ds.map(d=>`<th>${d.toLocaleDateString(undefined,{weekday:'short',timeZone:'UTC'})}<span class="dateSmall">${d.getUTCDate()}/${d.getUTCMonth()+1}</span></th>`).join('');
- let rows=ss.map(st=>{let cells=ds.map(d=>{let arr=(data.assignments[dateStr(d)]||[]).filter(a=>a.staffId===st.id&&duties.some(x=>x.id===a.dutyId));return `<td>${arr.map(a=>{let du=duties.find(x=>x.id===a.dutyId);return `<span class="cell ${du?.color||'c1'}"><strong>${esc(du?.name||'Duty')}</strong></span>`}).join('')||'—'}</td>`}).join('');return `<tr><td><b>${esc(st.name)}</b><span class="dateSmall">${esc(st.department)||''}</span></td>${cells}</tr>`}).join('');
- let legend=duties.map(d=>`<span class="${d.color}">${esc(d.name)}</span>`).join('');
- let editor=ds.map(d=>{let k=dateStr(d),arr=(data.assignments[k]||[]).filter(a=>duties.some(x=>x.id===a.dutyId));if(!arr.length)return '';let dateLabel=d.toLocaleDateString(undefined,{weekday:'short',day:'numeric',month:'short',timeZone:'UTC'});return `<div style="margin-top:7px"><b style="font-size:12px">${dateLabel}</b>${arr.map((a,i)=>{let globalIndex=(data.assignments[k]||[]).indexOf(a),du=duties.find(x=>x.id===a.dutyId);return `<div class="cell ${du?.color||'c1'}"><strong>${esc(du?.name||'Duty')}</strong><select onchange="changeA('${k}',${globalIndex},this.value)">${ss.map(s=>`<option value="${s.id}" ${s.id===a.staffId?'selected':''}>${esc(s.name)}</option>`).join('')}</select></div>`}).join('')}</div>`}).join('');
- $('rosterArea').innerHTML=`<div class="tableWrap"><table class="rosterTable"><thead><tr><th>Staff</th>${head}</tr></thead><tbody>${rows}</tbody></table></div><div class="legend">${legend}</div>${editor?`<details style="margin-top:9px"><summary style="cursor:pointer;font-weight:800">✏️ Manual edit assignments</summary>${editor}</details>`:''}`;
+function buildRows(){
+ let a=$('startDate').value,b=$('endDate').value;
+ if(!a||!b){alert('Please select the start and end date.');return}
+ let ds=datesBetween(a,b);if(!ds.length){alert('End date must be on or after start date.');return}
+ let chosen=selectedStaff();
+ if(!chosen.length){alert('Select at least one staff member.');return}
+ data.rows=ds.map((d,i)=>({date:dateStr(d),staffId:(data.rows[i]&&chosen.some(s=>s.id===data.rows[i].staffId))?data.rows[i].staffId:chosen[i%chosen.length].id}));
+ saveData();renderAssignments();renderPoster();
 }
-function renderStaff(){$('staffTable').innerHTML=data.staff.length?data.staff.map(s=>`<tr><td><b>${esc(s.name)}</b></td><td>${esc(s.designation)||'—'}</td><td>${esc(s.department)||'—'}</td><td><button class="danger" onclick="delStaff('${s.id}')">Delete</button></td></tr>`).join(''):'<tr><td colspan="4" class="empty">No staff added.</td></tr>'}
-function renderDuties(){$('dutyTable').innerHTML=data.duties.length?data.duties.map(d=>`<tr><td><b>${esc(d.name)}</b></td><td>${d.start||'—'}${d.end?' – '+d.end:''}</td><td><span class="badge ${d.color||'c1'}" style="display:inline-block;padding:4px 7px;border-radius:99px">${esc(d.name)}</span></td><td><button class="danger" onclick="delDuty('${d.id}')">Delete</button></td></tr>`).join(''):'<tr><td colspan="4" class="empty">No duties added.</td></tr>';$('dutyLegend').innerHTML=data.duties.map(d=>`<span class="${d.color||'c1'}">${esc(d.name)}</span>`).join('')}
-function renderStats(){$('staffCount').textContent=data.staff.length;$('dutyCount').textContent=data.duties.length;$('groupCount').textContent=data.groups.length;$('assignmentCount').textContent=Object.values(data.assignments).reduce((n,a)=>n+(a?.length||0),0)}
-function renderAll(){renderStaff();renderDuties();renderGroups();renderStats();renderGroupPicker();renderRoster()}
-$('resetBtn').addEventListener('click',()=>{if(confirm('Delete all saved staff, duties, groups and roster data?')){data={staff:[],duties:[],assignments:{},groups:[]};save()}});
-let today=new Date();$('weekPicker').value=today.getFullYear()+'-'+String(today.getMonth()+1).padStart(2,'0')+'-'+String(today.getDate()).padStart(2,'0');
-renderAll();
+function renderAssignments(){
+ let ds=data.rows.map(r=>parseDate(r.date)),chosen=selectedStaff();
+ if(!ds.length){$('assignmentRows').innerHTML='<div class="empty">Create rows first.</div>';return}
+ $('assignmentRows').innerHTML=ds.map((d,i)=>{let r=data.rows[i];return `<div class="saved" style="display:grid;grid-template-columns:100px 65px 1fr"><b>${niceDate(d)}</b><b>${dayName(d)}</b><select onchange="changePerson(${i},this.value)">${chosen.map(s=>`<option value="${s.id}" ${s.id===r.staffId?'selected':''}>${esc(s.name)}</option>`).join('')}</select></div>`}).join('');
+}
+function changePerson(i,id){if(data.rows[i]){data.rows[i].staffId=id;saveData();renderPoster()}}
+function clearNames(){data.rows.forEach(r=>r.staffId='');saveData();renderAssignments();renderPoster()}
+function renderPoster(){
+ let design=$('design').value,poster=$('poster');poster.className='poster '+design;
+ let rows=data.rows;
+ let title=$('rosterTitle').value.trim()||'Staff Roster',org=$('org').value.trim()||'DUTY ROSTER',side=$('sideText').value||'⚕',footer=$('footerText').value||'';
+ let label=$('rosterType').value;
+ let body=rows.length?rows.map(r=>{let d=parseDate(r.date),s=data.staff.find(x=>x.id===r.staffId);return `<tr><td class="date">${niceDate(d)}</td><td class="day">${dayName(d)}</td><td class="person">${esc(s?.name||'—')}</td></tr>`}).join(''):'<tr><td class="date">—</td><td class="day">—</td><td class="person">Create rows above</td></tr>';
+ let titleText=title;
+ if(label==='GDA'&&!/gda/i.test(titleText))titleText='GDA Roster'+(rows.length?' ('+niceDate(parseDate(rows[0].date))+' - '+niceDate(parseDate(rows[rows.length-1].date))+')':'');
+ poster.innerHTML=`<div class="topBand">${esc(org)}</div><div class="titleBand ${design==='orange'?'blue':''}">${esc(titleText)}</div><div class="posterGrid"><div class="side left"><div class="sideText">${esc(side)}</div></div><div><table class="rosterTable"><thead><tr><th>Date</th><th>Day</th><th>${esc(label==='Custom'?'Staff':label)}</th></tr></thead><tbody>${body}</tbody></table></div><div class="side right"><div class="sideText">${esc(side)}</div></div></div><div class="bottomBand">${esc(footer)}</div>`;
+}
+function saveRoster(){
+ if(!data.rows.length){alert('Create the roster first.');return}
+ let name=prompt('Enter a name for this roster:',($('org').value||'Roster')+' - '+($('rosterType').value||'Staff'));
+ if(!name)return;
+ data.saved.unshift({id:uid(),name,created:new Date().toISOString(),settings:{org:$('org').value,title:$('rosterTitle').value,type:$('rosterType').value,start:$('startDate').value,end:$('endDate').value,design:$('design').value,footer:$('footerText').value,side:$('sideText').value},rows:JSON.parse(JSON.stringify(data.rows))});
+ saveData();renderSaved();alert('Roster saved.');
+}
+function loadSaved(id){
+ let r=data.saved.find(x=>x.id===id);if(!r)return;
+ Object.assign($('org'),{value:r.settings.org});$('rosterTitle').value=r.settings.title;$('rosterType').value=r.settings.type;$('startDate').value=r.settings.start;$('endDate').value=r.settings.end;$('design').value=r.settings.design;$('footerText').value=r.settings.footer;$('sideText').value=r.settings.side;
+ data.rows=JSON.parse(JSON.stringify(r.rows));renderAssignments();renderPoster();showTab('designer');
+}
+function deleteSaved(id){data.saved=data.saved.filter(x=>x.id!==id);saveData();renderSaved()}
+function renderSaved(){$('savedList').innerHTML=data.saved.length?data.saved.map(r=>`<div class="saved"><div><b>${esc(r.name)}</b><div class="muted">${new Date(r.created).toLocaleString()}</div></div><div class="actions" style="margin:0"><button class="primary" onclick="loadSaved('${r.id}')">Load</button><button class="danger" onclick="deleteSaved('${r.id}')">Delete</button></div></div>`).join(''):'<div class="empty">No saved rosters.</div>'}
+function addStaff(e){e.preventDefault();data.staff.push({id:uid(),name:$('staffName').value.trim(),designation:$('staffDesignation').value.trim(),dept:$('staffDept').value.trim()});e.target.reset();saveData();renderStaff();renderStaffChecks()}
+function delStaff(id){data.staff=data.staff.filter(s=>s.id!==id);data.rows.forEach(r=>{if(r.staffId===id)r.staffId=''});saveData();renderStaff();renderStaffChecks();renderAssignments();renderPoster()}
+function renderStaff(){$('staffList').innerHTML=data.staff.length?data.staff.map(s=>`<div class="saved"><div><b>${esc(s.name)}</b><div class="muted">${esc(s.designation||'')} ${s.dept?'• '+esc(s.dept):''}</div></div><button class="danger" onclick="delStaff('${s.id}')">Delete</button></div>`).join(''):'<div class="empty">No staff added.</div>'}
+
+function showTab(id){document.querySelectorAll('.page').forEach(p=>p.classList.toggle('hidden',p.id!==id));document.querySelectorAll('.tab').forEach(b=>b.classList.toggle('active',b.dataset.tab===id));if(id==='staff')renderStaff();if(id==='saved')renderSaved();if(id==='designer'){renderStaffChecks();renderAssignments();renderPoster()}}
+document.querySelectorAll('.tab').forEach(b=>b.addEventListener('click',()=>showTab(b.dataset.tab)));
+
+$('staffForm').addEventListener('submit',addStaff);
+$('makeRows').addEventListener('click',buildRows);
+$('clearAssignments').addEventListener('click',clearNames);
+$('printBtn').addEventListener('click',()=>window.print());
+$('saveBtn').addEventListener('click',saveRoster);
+['org','rosterTitle','rosterType','design','footerText','sideText'].forEach(id=>$(id).addEventListener('input',renderPoster));
+$('startDate').addEventListener('change',()=>{if(!$('endDate').value)$('endDate').value=$('startDate').value});
+$('resetBtn').addEventListener('click',()=>{if(confirm('Delete all staff and saved poster rosters?')){data={staff:[],saved:[],rows:[]};saveData();location.reload()}});
+
+let today=new Date(),start=new Date(today);start.setDate(start.getDate()-(start.getDay()+6)%7),end=new Date(start);end.setDate(start.getDate()+6);
+$('startDate').value=dateStr(new Date(Date.UTC(start.getFullYear(),start.getMonth(),start.getDate(),12)));
+$('endDate').value=dateStr(new Date(Date.UTC(end.getFullYear(),end.getMonth(),end.getDate(),12)));
+
+renderStaff();renderStaffChecks();renderSaved();renderPoster();
 </script>
 </body>
 </html>
